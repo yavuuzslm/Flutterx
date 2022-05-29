@@ -6,7 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
-      primarySwatch: Colors.blue,
+      primarySwatch: Colors.red,
     );
     return MaterialApp(
       theme: theme.copyWith(
@@ -14,28 +14,40 @@ class MyApp extends StatelessWidget {
         secondary: Colors.red,
       )),
       home: Scaffold(
+        backgroundColor: Colors.brown,
         appBar: AppBar(
           title: Text("Flutter Demo"),
         ),
         body: Center(
-          child: Text(
-            "Hello World",
-            style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 24,
-                fontWeight: FontWeight.w200,
-                color: Colors.red),
+          child: Container(
+            //color: Colors.blueGrey,
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: NetworkImage(
+                    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"),
+                fit: BoxFit.cover,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 10,
+                  offset: Offset(0, 10),
+                ),
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 10,
+                  offset: Offset(0, -10),
+                ),
+              ],
+            ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            debugPrint("FAB clicked");
-          },
-          child: Icon(
-            Icons.add_circle_outline,
-            color: Colors.amber,
-          ),
-          backgroundColor: Colors.grey.shade900,
         ),
       ),
     );
